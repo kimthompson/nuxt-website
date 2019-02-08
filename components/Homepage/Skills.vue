@@ -1,21 +1,12 @@
 <template>
   <section id="skills" class="skills">
-    <h2 class="skills_title">Skills</h2>
-    <vue-swing v-if="isMobile()" ref="vueswing" :config="smallConfig">
-      <div v-for="skill in skills" :key="skill.index" class="skillCard">
-        <div class="skillCard_top">
-          <h2 class="skillCard_rank">{{ skill.level }}</h2>
-          <h3 class="skillCard_title">{{ skill.name }}</h3>
-        </div>
-        <fa :style="{color: skill.color}" :icon="skill.icon" class="skillCard_icon"/>
-        <p class="skillCard_story" v-html="skill.story"></p>
-        <div class="skillCard_bottom">
-          <h3 class="skillCard_title">{{ skill.name }}</h3>
-          <h2 class="skillCard_rank">{{ skill.level }}</h2>
-        </div>
-      </div>
-    </vue-swing>
-    <vue-swing v-else ref="vueswing" :config="config">
+    <div class="skills_header">
+      <h2>Skills</h2>
+      <button @click="forceRerender">
+        <fa :icon="faRedoAlt"/>
+      </button>
+    </div>
+    <vue-swing ref="vueswing" :config="config" :key="componentKey">
       <div v-for="skill in skills" :key="skill.index" class="skillCard">
         <div class="skillCard_top">
           <h2 class="skillCard_rank">{{ skill.level }}</h2>
@@ -34,6 +25,7 @@
 
 <script>
 import { skills } from '../../assets/data/skills_data.js'
+import { faRedoAlt } from '@fortawesome/free-solid-svg-icons'
 import VueSwing from 'vue-swing'
 
 export default {
@@ -52,11 +44,12 @@ export default {
         minThrowOutDistance: 350,
         maxThrowOutDistance: 450
       },
-      smallConfig: {
-        allowedDirections: [VueSwing.Direction.LEFT, VueSwing.Direction.RIGHT],
-        minThrowOutDistance: 125,
-        maxThrowOutDistance: 175
-      }
+      componentKey: 0
+    }
+  },
+  computed: {
+    faRedoAlt() {
+      return faRedoAlt
     }
   },
   methods: {
@@ -70,6 +63,9 @@ export default {
         console.log(false)
         return false
       }
+    },
+    forceRerender() {
+      this.componentKey += 1
     }
   }
 }
@@ -85,8 +81,10 @@ export default {
   min-height: 600px;
 }
 
-.skills_title {
-  margin-left: 1rem;
+.skills_header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1rem;
 }
 
 .skills_container {
