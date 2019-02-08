@@ -1,7 +1,21 @@
 <template>
   <section id="skills" class="skills">
     <h2 class="skills_title">Skills</h2>
-    <vue-swing ref="vueswing" :config="config" @throwout="throwout">
+    <vue-swing v-if="isMobile()" ref="vueswing" :config="smallConfig">
+      <div v-for="skill in skills" :key="skill.index" class="skillCard">
+        <div class="skillCard_top">
+          <h2 class="skillCard_rank">{{ skill.level }}</h2>
+          <h3 class="skillCard_title">{{ skill.name }}</h3>
+        </div>
+        <fa :style="{color: skill.color}" :icon="skill.icon" class="skillCard_icon"/>
+        <p class="skillCard_story" v-html="skill.story"></p>
+        <div class="skillCard_bottom">
+          <h3 class="skillCard_title">{{ skill.name }}</h3>
+          <h2 class="skillCard_rank">{{ skill.level }}</h2>
+        </div>
+      </div>
+    </vue-swing>
+    <vue-swing v-else ref="vueswing" :config="config">
       <div v-for="skill in skills" :key="skill.index" class="skillCard">
         <div class="skillCard_top">
           <h2 class="skillCard_rank">{{ skill.level }}</h2>
@@ -35,8 +49,26 @@ export default {
       }),
       config: {
         allowedDirections: [VueSwing.Direction.LEFT, VueSwing.Direction.RIGHT],
-        minThrowOutDistance: 300,
-        maxThrowOutDistance: 375
+        minThrowOutDistance: 350,
+        maxThrowOutDistance: 450
+      },
+      smallConfig: {
+        allowedDirections: [VueSwing.Direction.LEFT, VueSwing.Direction.RIGHT],
+        minThrowOutDistance: 125,
+        maxThrowOutDistance: 175
+      }
+    }
+  },
+  methods: {
+    isMobile() {
+      if (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)
+      ) {
+        console.log(true)
+        return true
+      } else {
+        console.log(false)
+        return false
       }
     }
   }
@@ -123,6 +155,10 @@ export default {
 }
 
 @media (max-width: $tablet) {
+  .skills {
+    min-height: 500px;
+  }
+
   .skillCard {
     width: 15em;
     height: 20em;

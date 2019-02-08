@@ -76,4 +76,7 @@ module.exports = {
       }
     }
   }
+  // generate: {
+  //   dir: '../kimthompson.github.io'
+  // }
 }
