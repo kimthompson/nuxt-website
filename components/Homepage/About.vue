@@ -16,7 +16,7 @@
     <livejournal/>
     <div class="about_left">
       <h2>About Me</h2>
-      <aside>I’m a software developer and ex-journalist who has been living and working in the Twin Cities since I graduated from the University of Minnesota in 2015. I'm a generalist, with experience making applications for web, Windows and iOS (see the cards below for my history and my current self-ranking of these skills). I am currently making web apps for Minnesota Public Radio, and am so glad to be working in media again, and for an organization I believe in. I hope to post my side projects here, and to blog about them and many other topics on Medium.</aside>
+      <aside>I’m a software developer and writer who has been living and working in the Twin Cities since I graduated from the University of Minnesota in 2015. I'm a generalist, with experience making applications for web, Windows and iOS. I currently make web apps for Minnesota Public Radio. I hope to post my side projects here, and to blog about them and many other topics on Medium.</aside>
     </div>
   </section>
 </template>

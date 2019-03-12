@@ -11,7 +11,7 @@
       </tr>
       <tr>
         <td class="livejournal_label">currently watching</td>
-        <td class="livejournal_attr">RuPaul's Drag Race All Stars s4</td>
+        <td class="livejournal_attr">RuPaul's Drag Race s11</td>
       </tr>
       <tr>
         <td class="livejournal_label">currently playing (mmo edition)</td>
@@ -19,7 +19,7 @@
       </tr>
       <tr>
         <td class="livejournal_label">currently watching (anime edition)</td>
-        <td class="livejournal_attr">Zombieland Saga</td>
+        <td class="livejournal_attr">Love Is War</td>
       </tr>
     </table>
   </section>
